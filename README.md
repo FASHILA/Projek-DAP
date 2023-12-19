@@ -42,6 +42,9 @@ Penelitian ini diharapkan dapat memberikan kontribusi pada pengembangan sistem p
 1. Meningkatkan pemahaman tentang faktor-faktor yang mempengaruhi tingkat stres perawat.
 2. Memberikan landasan untuk pengembangan solusi atau intervensi yang dapat mengurangi tingkat stres perawat.
 3. Menyediakan dasar empiris bagi penelitian lebih lanjut dalam penggunaan teknologi wearable sensors dan algoritma data mining dalam konteks kesehatan.
+
+# BAB II : LANDASAN TEORI
+
 ## Algoritma ANN
 
 ```R
