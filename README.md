@@ -85,6 +85,7 @@ Artificial Neural Network (ANN) adalah model komputasi yang terinspirasi oleh ja
 
 K-means adalah algoritma klastering yang digunakan untuk mengelompokkan data ke dalam kelompok-kelompok berdasarkan kemiripan atribut. Fungsi utama k-means adalah mengidentifikasi pola, struktur, dan hubungan dalam data yang tidak terlihat secara langsung. Tujuannya adalah untuk mengorganisir data yang besar menjadi kelompok yang lebih kecil dan bermakna, memfasilitasi analisis data, segmentasi pasar, pengambilan keputusan, dan pemahaman yang lebih mendalam tentang data
 
+
 ## Algoritma ANN
 
 ```R
