@@ -94,6 +94,7 @@ nurse_data <- read.csv("~/DAP/Project K-Means/project new/nurse_data.csv")
 ```R
 View(nurse_data)
 ```
+Untuk mengimport data ke Rstudio Kami menggunakan fungsi yang tersedia di Rstudio yaitu ‘read.csv()’
 
 ## Pembagian Data
 
@@ -108,24 +109,40 @@ train=nurse_data[samp,]
 ```R
 test=nurse_data[-samp,]
 ```
+Kode di atas digunakan untuk membagi dataset nurse_data menjadi dua bagian: satu untuk pelatihan (training) dan satu untuk pengujian (testing), dengan proporsi 75% data untuk pelatihan dan 25% data untuk pengujian.
 
 ## Seleksi Fitur
+
+Kode ini digunakan untuk membuat formula regresi linear dari kolom-kolom pertama hingga kesembilan dalam dataset nurse_data. Berikut adalah penjelasan langkah-langkahnya:
 
 ```R
 feats<-names(nurse_data[,1:9])
 ```
+Mengambil nama-nama kolom dari kolom pertama hingga kesembilan dalam dataset nurse_data dan menyimpannya dalam vektor feats.
 ```R
 f<-paste(feats,collapse='+');f
 ```
+Menggunakan fungsi paste untuk menggabungkan nama-nama kolom dalam vektor feats dengan operator +. Hasilnya adalah sebuah string yang berisi formula regresi linear dengan variabel-variabel tersebut yang dihubungkan oleh operator +. Contohnya, jika nama kolom adalah "X1", "X2", ..., "X9", maka hasilnya akan menjadi "X1+X2+...+X9".
+
+f: Menampilkan hasil formula regresi linear yang telah dibuat.
 
 ## Pembuatan Formula
+
+Kode di atas digunakan untuk membuat formula regresi linear yang bersifat dinamis dengan memasukkan nama kolom label sebagai respons variabel. 
 
 ```R
 f1<-paste('label~',f);f1
 ```
+Menggunakan fungsi paste untuk membuat formula regresi linear dengan memasukkan "label~" di depan string formula sebelumnya (f). Hasilnya adalah sebuah string formula regresi linear lengkap yang mencakup variabel label dan variabel-variabel prediktor yang telah ditentukan sebelumnya.
+
+f1: Menampilkan hasil formula regresi linear yang telah dibuat, di mana respons variabel (label) dihubungkan dengan variabel-variabel prediktor.
+
 ```R
 f2<-as.formula(f1);f2
 ```
+Menggunakan fungsi as.formula untuk mengonversi string formula regresi linear (f1) menjadi objek formula yang dapat digunakan dalam fungsi-fungsi statistik di R.
+
+f2: Menampilkan hasil formula regresi linear yang telah dikonversi menjadi objek formula.
 
 ## Menghilangkan Kolom
 
@@ -135,22 +152,19 @@ nurse_data <- nurse_data[-7]
 ```R
 nurse_data <- nurse_data[-7]
 ```
+Menghilangkan kolom id dan kolom datetime di nurse_data
+
 ```R
 train <- train[-7]
 ```
 ```R
 train <- train[-7]
 ```
+Menghilangkan kolom id dan kolom datetime di data train
 
 ## Inisialisasi Model nn
-```R
-nn<-neuralnet(f2,train,hidden=7)
-```
-```R
-str(f2)
-```
+Kode ini tampaknya merupakan usaha untuk membuat dan melatih model jaringan saraf menggunakan paket neuralnet di R.
 
-## Pembaruan Formula
 ```R
 f2 <- update(f2, . ~ . - id)
 ```
@@ -164,20 +178,12 @@ f2 <- update(f2, . ~ . - datetime)
 print(f2)
 ```
 ```R
-nn<-neuralnet(f2,train,hidden=7)
-```
-```R
-str(train)
-```
-```R
-nn<-neuralnet(f2,train,hidden=7)
-```
-```R
 library(neuralnet)
 ```
 ```R
 nn<-neuralnet(f2,train,hidden=7)
 ```
+Membuat dan melatih model jaringan saraf menggunakan fungsi neuralnet. Formula regresi linear (f2) digunakan sebagai formula model, train adalah dataset pelatihan, dan hidden=7 menunjukkan bahwa ada 7 node di lapisan tersembunyi.
 
 ## Visualisasi Model
 ```R
@@ -188,38 +194,50 @@ plot(nn)
 ```R
 pred<- compute(nn,test[1:7])
 ```
+Kode di atas digunakan untuk menghitung output dari model jaringan saraf (nn) pada data pengujian (test) menggunakan fungsi compute pada 7 kolom pertama dari dataset pengujian.
 
 ## Evaluasi Model
 ```R
 nn <- neuralnet(label ~ X + Y + Z + EDA + HR + TEMP, data = train_data, hidden = 7)
 ```
+Membuat dan melatih model jaringan saraf dengan formula label ~ X + Y + Z + EDA + HR + TEMP menggunakan data pelatihan train_data. Jaringan saraf ini memiliki 7 node di lapisan tersembunyi.
 ```R
 index_train <- sample(1:nrow(nurse_data), 0.7 * nrow(nurse_data))
 ```
+Menghasilkan indeks acak sebanyak 70% dari jumlah baris dalam dataset nurse_data. Ini digunakan untuk membagi data menjadi subset pelatihan.
 ```R
 train_data <- nurse_data[index_train, ]
 ```
+Menggunakan indeks acak yang dihasilkan sebelumnya untuk memilih subset data pelatihan dari dataset nurse_data.
 ```R
 test_data <- nurse_data[-index_train, ]
 ```
+Membuat subset data pengujian dengan menggunakan baris yang tidak termasuk dalam subset pelatihan.
 ```R
 nn <- neuralnet(label ~ X + Y + Z + EDA + HR + TEMP, data = train_data, hidden = 7)
 ```
+Membuat dan melatih model jaringan saraf lagi pada subset data pelatihan yang baru.
 ```R
 pred <- predict(nn, test_data)
 ```
+Menggunakan model yang telah dilatih untuk membuat prediksi pada data pengujian test_data.
 ```R
 pred_class <- ifelse(pred > 0.5, 1, 0)
 ```
+Mengklasifikasikan hasil prediksi ke dalam dua kelas berdasarkan threshold 0.5.
 ```R
 conf_matrix <- table(pred_class, test_data$label)
 ```
+Membuat tabel kontingensi untuk mengevaluasi kinerja model.
 ```R
 conf_matrix
 ```
+Menampilkan tabel kontingensi.
 ```R
 accuracy_nn <- sum(diag(conf_matrix)) / sum(conf_matrix)
 ```
+ Menghitung akurasi model menggunakan nilai diagonal tabel kontingensi.
 ```R
 accuracy_nn
 ```
+Menampilkan nilai akurasi model.
