@@ -44,6 +44,46 @@ Penelitian ini diharapkan dapat memberikan kontribusi pada pengembangan sistem p
 3. Menyediakan dasar empiris bagi penelitian lebih lanjut dalam penggunaan teknologi wearable sensors dan algoritma data mining dalam konteks kesehatan.
 
 # BAB II : LANDASAN TEORI
+## 2.1. Pengenalan Parameter Data
+
+1. Variabel Orientasi (X, Y, Z)
+Data orientasi terdiri dari tiga variabel, yaitu X, Y, dan Z, masing-masing memiliki 256 entri unik. Variabel ini menggambarkan orientasi suatu objek atau entitas dalam tiga dimensi.
+
+2. Elektrodermal Activity (EDA)
+EDA mencakup 274.452 entri unik dan mengukur aktivitas elektrodermal, yang dapat mencerminkan tingkat stres atau kecemasan pada subjek.
+
+3. Heart Rate (HR)
+Variabel Heart Rate memiliki 6.268 entri unik dan mengukur denyut jantung. Informasi ini dapat memberikan gambaran tentang tingkat aktivitas fisik atau emosional subjek.
+
+4. Temperatur (TEMP)
+Temperatur, dengan 599 entri unik, mencatat suhu fisik subjek. Perubahan dalam suhu tubuh dapat mencerminkan aktivitas fisiologis yang bermanfaat untuk pemahaman lebih lanjut tentang kondisi subjek.
+
+5. Identifier (id)
+Variabel kategorikal 'id' berisi 18 pengidentifikasi kategorikal yang mewakili individu atau kelompok tertentu dalam dataset.
+
+6. Waktu (datetime)
+Variabel datetime memiliki 10,6 juta entri unik yang merepresentasikan tanggal dan waktu setiap pengukuran. Analisis waktu dapat memberikan wawasan tentang pola atau tren temporal dalam data.
+
+7. Kategori Kelas (Label)
+Variabel 'label' berisi tiga entri unik yang mewakili status atau kelas tertentu. Kategori ini dapat digunakan untuk tugas klasifikasi dan pemahaman lebih lanjut tentang hubungan antara parameter lain dalam dataset.
+
+## 2.2 Pengenalan tentang RStudio
+RStudio adalah sebuah Integrated Development Environment (IDE) yang dirancang khusus untuk pengembangan aplikasi dan analisis data menggunakan bahasa pemrograman R. RStudio menyediakan berbagai fitur dan alat untuk memudahkan pengguna dalam menulis, menguji, dan menjalankan kode R, serta mengorganisir proyek dan menganalisis data. 
+
+Contoh penggunaan RStudio Misalkan seorang data scientist ingin melakukan analisis data untuk sebuah proyek penelitian. Kita dapat mengimpor data, menulis dan menjalankan kode, menganalisis and visualisasi data, mengatur proyek, berbagi hasil, dll.
+
+## 2.3 Algoritma dalam RStudio
+
+Untuk melakukan analisis pada data `Nurse Stress Prediction Wearable Sensors` , terdapat berbagai algoritma dan teknik yang dapat digunakan. Berikut ini beberapa contoh penggunaan algoritma untuk analisis data 
+`Nurse Stress Prediction Wearable Sensors`:
+
+1. Artificial Neural Network (ANN) 
+
+Artificial Neural Network (ANN) adalah model komputasi yang terinspirasi oleh jaringan saraf biologis, terdiri dari neuron dan bobot-bobot yang dapat disesuaikan. Tujuannya adalah memahami, mengklasifikasi, dan memprediksi pola kompleks dalam data dengan kemampuan adaptasi terhadap variasi data, melakukan pelatihan dan pembelajaran dari data, serta aplikasi dalam kecerdasan buatan untuk menangani masalah kompleks dan non-linier. ANN juga diarahkan untuk pemrosesan data non-linear dan generalisasi, sehingga dapat memberikan prediksi yang baik pada data yang belum pernah dilihat sebelumnya.
+
+2. K-Means (Clustering)
+
+K-means adalah algoritma klastering yang digunakan untuk mengelompokkan data ke dalam kelompok-kelompok berdasarkan kemiripan atribut. Fungsi utama k-means adalah mengidentifikasi pola, struktur, dan hubungan dalam data yang tidak terlihat secara langsung. Tujuannya adalah untuk mengorganisir data yang besar menjadi kelompok yang lebih kecil dan bermakna, memfasilitasi analisis data, segmentasi pasar, pengambilan keputusan, dan pemahaman yang lebih mendalam tentang data
 
 ## Algoritma ANN
 
