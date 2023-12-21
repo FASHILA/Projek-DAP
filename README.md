@@ -268,14 +268,14 @@ Mengonversi dataframe nurse_data menjadi matriks.
 str(nurse_data)
 ```
 
-# Memilih Kolom yang Akan Digunakan
+## Memilih Kolom yang Akan Digunakan
 ```R
 nurse_data <- nurse_data[, c("EDA", "TEMP")]
 View(nurse_data)
 ```
 Untuk memilih hanya kolom "EDA" dan "TEMP" dari matriks nurse_data yang telah dihasilkan sebelumnya.
 
-# Inisialisasi Variabel untuk K-Means
+## Inisialisasi Variabel untuk K-Means
 ```R
 cluster <- 3
 c_initial <- c(0,1,2)
@@ -284,7 +284,7 @@ cent_DF <- data.frame(c = c_initial, centroid)
 ```
 Inisialisasi variabel yang diperlukan untuk proses K-Means, termasuk jumlah cluster (cluster), nilai awal untuk centroid (c_initial), serta inisialisasi variabel centroid dan cent_DF yang akan digunakan dalam visualisasi.
 
-# Inisialisasi Matriks untuk Perhitungan Jarak
+## Inisialisasi Matriks untuk Perhitungan Jarak
 ```R
 d <- matrix(0, nrow = nrow(nurse_data), ncol = cluster)
 c <- matrix(0, nrow = nrow(nurse_data), ncol = 1)
@@ -299,7 +299,7 @@ updCentroid
 ```
 Inisialisasi variabel updCentroid untuk menyimpan centroid yang diperbarui, variabel status yang digunakan untuk menentukan apakah iterasi K-Means sudah konvergen atau belum, variabel iter untuk menyimpan jumlah iterasi, dan dataframe df yang akan digunakan dalam visualisasi.
 
-# Membuat Inisial Plot menggunakan ggplot2
+## Membuat Inisial Plot menggunakan ggplot2
 ```R
 initPlot2 <- ggplot(df, aes(EDA, TEMP)) +
   geom_point(size=3) + geom_point(data=cent_DF, color=c("blue", "red", "green"), size=10)
@@ -308,7 +308,7 @@ ggsave(filename = "nurse_data, 3 Cluster - initial.png", width = 40, height = 20
 ```
 Untuk membuat plot awal dengn ggplot2.
 
-# Iterasi K-Means dengan Visualisasi dan Simpan Plot
+## Iterasi K-Means dengan Visualisasi dan Simpan Plot
 ```R
 while (status != 0)
 {
@@ -318,7 +318,7 @@ while (status != 0)
 ```
 Mengeksekusi proses K-Means clustering dalam loop while hingga konvergensi (status menjadi 0). Pada setiap iterasi, jarak antara setiap data dengan centroid dihitung, cluster baru ditentukan, dan hasil clustering divisualisasikan. Setiap plot disimpan dengan menggunakan ggsave.
 
-# Perhitungan Jarak dan Penentuan Cluster
+## Perhitungan Jarak dan Penentuan Cluster
 
 ```R
 for (j in 1:cluster) {
@@ -344,37 +344,37 @@ for (i in 1:nrow(d)) {
 ```
 Digunakan untuk menetapkan nomor cluster pada setiap data berdasarkan jarak terkecil.
 
-# Membuat Data Frame untuk Plot
+## Membuat Data Frame untuk Plot
 ```R
 df <- data.frame(c, nurse_data)
 ```
 Membuat data frame baru (df) yang menggabungkan kolom nomor cluster (c) dengan nurse_data.
 
-# Membuat Data Frame untuk Centroid
+## Membuat Data Frame untuk Centroid
 ```R
 cent_DF <- data.frame(c = c_initial, centroid)
 ```
 Membuat data frame baru (cent_DF) yang berisi kolom nomor cluster (c) dan nilai centroid awal (c_initial).
 
-# Menggabungkan Data Frame untuk Plot dan Centroid
+## Menggabungkan Data Frame untuk Plot dan Centroid
 ```R
 gg <- merge(df, cent_DF, by="c")
 ```
 Menggabungkan data frame df dan cent_DF berdasarkan kolom nomor cluster (c).
 
-# Membuat Plot dengan ggplot2
+## Membuat Plot dengan ggplot2
 ```R
 plot <- ggplot(gg, aes(EDA.x, TEMP.x, color=factor(c))) + geom_point(size=3) +
   geom_point(aes(x = EDA.y, y = TEMP.y), size=5) +
   geom_segment(aes(x = EDA.y, y = TEMP.y, xend = EDA.x, yend = TEMP.x))
 ```
 
-# Menyimpan Plot sebagai File Gambar
+## Menyimpan Plot sebagai File Gambar
 ```R
 ggsave(plot, file = fn, width = 40, height = 20, units = "cm")
 ```
 
-# Menghitung centroid baru berdasarkan data cluster baru
+## Menghitung centroid baru berdasarkan data cluster baru
 ```R
 compare <- cbind(nurse_data, c)
 
@@ -389,7 +389,7 @@ for (i in 1:cluster)
   }
 ```
 
-# Pemeriksaan Kesamaan Centroid
+## Pemeriksaan Kesamaan Centroid
 ```R
 if(all(updCentroid == centroid)){
     status = 0
@@ -408,42 +408,42 @@ if(all(updCentroid == centroid)){
 ```
 Kita cek apakah semua nilai dalam matriks updCentroid sama dengan nilai dalam matriks centroid. Jika iya, maka kita anggap proses K-Means clustering sudah selesai (konvergen) dan set status menjadi 0. Jika tidak, kita set status menjadi 1, yang berarti kita perlu melanjutkan iterasi.
 
-# Menggunakan K-Means Library
+## Menggunakan K-Means Library
 ```R
 nurse_data2 <- nurse_data
 ```
 
-# Memilih atribut yang akan digunakan untuk clustering
+## Memilih atribut yang akan digunakan untuk clustering
 ```R
 attributes <- nurse_data2[, c("EDA", "TEMP")]
 ```
 
-# Menentukan jumlah cluster yang diinginkan
+## Menentukan jumlah cluster yang diinginkan
 ```R
 num_clusters <- 3
 ```
 
-# Melakukan clustering menggunakan K-Means
+## Melakukan clustering menggunakan K-Means
 ```R
 kmeans_result <- kmeans(attributes, centers = num_clusters)
 ```
 
-# Menampilkan hasil clustering
+## Menampilkan hasil clustering
 ```R
 print(kmeans_result)
 ```
 
-# Menambahkan kolom cluster ke dalam data frame nurse_data
+## Menambahkan kolom cluster ke dalam data frame nurse_data
 ```R
 nurse_data$Cluster <- as.numeric(kmeans_result$cluster)
 ```
 
-# Melihat nurse_data dengan kolom Cluster yang telah ditambahkan
+## Melihat nurse_data dengan kolom Cluster yang telah ditambahkan
 ```R
 head(nurse_data)
 ```
 
-# Visualisasi hasil clustering dengan plot
+## Visualisasi hasil clustering dengan plot
 ```R
 plot(attributes, col = kmeans_result$cluster, pch = 20, main = "nurse_data Clustering with K-Means")
 
