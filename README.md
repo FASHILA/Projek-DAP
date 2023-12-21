@@ -1,4 +1,4 @@
-# BAB I : PENDAHULUAN
+![nurse_data, 3 Cluster - iter 2 ](https://github.com/FASHILA/Projek-DAP/assets/147138967/e005f9da-e06e-4425-a366-d1811ea211a8)# BAB I : PENDAHULUAN
 ## 1.1 Latar Belakang
 
 Meningkatnya aksesibilitas teknologi wearable telah membuka pintu untuk terus memantau berbagai faktor fisiologis. Mendeteksi stres sejak dini telah menjadi hal yang sangat penting, membantu individu dalam mengelola kesehatan mereka secara proaktif terhadap dampak buruk dari paparan stres yang berkepanjangan. Makalah ini menyajikan hasil analisis deteksi stres eksklusif yang dikembangkan dalam lingkungan alami rumah sakit. Disusun selama wabah COVID-19, kumpulan data ini mencakup data biometrik perawat. Menganalisis stres di tempat kerja adalah hal yang rumit karena adanya beragam elemen sosial, budaya, dan psikologis yang melekat dalam menghadapi keadaan stres. Oleh karena itu, kumpulan data kami tidak hanya mencakup data fisiologis tetapi juga informasi kontekstual seputar peristiwa stres. Metrik fisiologis utama seperti aktivitas elektrodermal, detak jantung, dan suhu kulit subjek perawat terus dipantau. Selain itu, survei berkala yang dilakukan melalui ponsel pintar menangkap faktor-faktor yang berkontribusi terhadap kejadian stres yang terdeteksi. Basis data yang menampung sinyal-sinyal ini, kejadian stres, dan respons survei dapat diakses publik di Dryad.
@@ -268,6 +268,7 @@ Mengonversi dataframe nurse_data menjadi matriks.
 ```R
 str(nurse_data)
 ```
+![image](https://github.com/FASHILA/Projek-DAP/assets/147138967/ef9681f9-f4c6-48bd-a6d1-f3d4d558c378)
 
 ## Memilih Kolom yang Akan Digunakan
 ```R
@@ -275,6 +276,7 @@ nurse_data <- nurse_data[, c("EDA", "TEMP")]
 View(nurse_data)
 ```
 Untuk memilih hanya kolom "EDA" dan "TEMP" dari matriks nurse_data yang telah dihasilkan sebelumnya.
+![image](https://github.com/FASHILA/Projek-DAP/assets/147138967/a11802dc-c342-4e91-bf0f-aa028289a768)
 
 ## Inisialisasi Variabel untuk K-Means
 ```R
@@ -282,13 +284,19 @@ cluster <- 3
 c_initial <- c(0,1,2)
 centroid <- nurse_data[1:cluster,]
 cent_DF <- data.frame(c = c_initial, centroid)
+print (centroid)
+print (cent_DF)
 ```
 Inisialisasi variabel yang diperlukan untuk proses K-Means, termasuk jumlah cluster (cluster), nilai awal untuk centroid (c_initial), serta inisialisasi variabel centroid dan cent_DF yang akan digunakan dalam visualisasi.
+![image](https://github.com/FASHILA/Projek-DAP/assets/147138967/bd66cac8-0118-41aa-81e4-88d7d254c56c)
+![image](https://github.com/FASHILA/Projek-DAP/assets/147138967/a34f63a8-c801-42ed-af17-5ed36bc26d6b)
 
 ## Inisialisasi Matriks untuk Perhitungan Jarak
 ```R
 d <- matrix(0, nrow = nrow(nurse_data), ncol = cluster)
 c <- matrix(0, nrow = nrow(nurse_data), ncol = 1)
+d
+c
 ```
 Inisialisasi matriks d dan c dengan nilai nol. Matriks d akan digunakan untuk menyimpan jarak antara setiap titik data dengan centroid, sedangkan matriks c akan menyimpan nomor cluster yang ditetapkan pada setiap titik data.
 ```R
@@ -299,6 +307,7 @@ df <- data.frame(nurse_data)
 updCentroid
 ```
 Inisialisasi variabel updCentroid untuk menyimpan centroid yang diperbarui, variabel status yang digunakan untuk menentukan apakah iterasi K-Means sudah konvergen atau belum, variabel iter untuk menyimpan jumlah iterasi, dan dataframe df yang akan digunakan dalam visualisasi.
+![image](https://github.com/FASHILA/Projek-DAP/assets/147138967/6c3ae2e2-de7c-4ad3-bf69-974175f9c4cd)
 
 ## Membuat Inisial Plot menggunakan ggplot2
 ```R
@@ -308,6 +317,8 @@ initPlot2
 ggsave(filename = "nurse_data, 3 Cluster - initial.png", width = 40, height = 20, unit = "cm")
 ```
 Untuk membuat plot awal dengn ggplot2.
+![image](https://github.com/FASHILA/Projek-DAP/assets/147138967/0f548a9e-e407-4ac7-a04a-7a76afa65f2a)
+![image](https://github.com/FASHILA/Projek-DAP/assets/147138967/a40dac11-ab3e-469b-9da1-37fc3cd1a8ef)
 
 ## Iterasi K-Means dengan Visualisasi dan Simpan Plot
 ```R
@@ -409,6 +420,12 @@ if(all(updCentroid == centroid)){
 ```
 Kita cek apakah semua nilai dalam matriks updCentroid sama dengan nilai dalam matriks centroid. Jika iya, maka kita anggap proses K-Means clustering sudah selesai (konvergen) dan set status menjadi 0. Jika tidak, kita set status menjadi 1, yang berarti kita perlu melanjutkan iterasi.
 
+# Hasil Gambar Plot
+![nurse_data, 3 Cluster - initial](https://github.com/FASHILA/Projek-DAP/assets/147138967/9cf702c4-23f1-4b28-a84c-3330d09c6408)
+![nurse_data, 3 Cluster - iter 2 ](https://github.com/FASHILA/Projek-DAP/assets/147138967/843012d9-4783-494e-8c60-bbda384c7d4b)
+![nurse_data, 3 Cluster - iter 5 ](https://github.com/FASHILA/Projek-DAP/assets/147138967/13ac6f23-67c8-4930-872d-8e4bc7c50e6a)
+![nurse_data, 3 Cluster - iter 1 ](https://github.com/FASHILA/Projek-DAP/assets/147138967/3229cba8-66b3-41b3-9070-20c05325a8c1)
+
 ## Menggunakan K-Means Library
 ```R
 nurse_data2 <- nurse_data
@@ -433,6 +450,8 @@ kmeans_result <- kmeans(attributes, centers = num_clusters)
 ```R
 print(kmeans_result)
 ```
+![image](https://github.com/FASHILA/Projek-DAP/assets/147138967/27ea5d09-cec7-4f6a-8951-71c33c454a19)
+![image](https://github.com/FASHILA/Projek-DAP/assets/147138967/7a33e0c2-5e55-43f3-855c-15476b1e91cb)
 
 ## Menambahkan kolom cluster ke dalam data frame nurse_data
 ```R
@@ -443,6 +462,8 @@ nurse_data$Cluster <- as.numeric(kmeans_result$cluster)
 ```R
 head(nurse_data)
 ```
+![image](https://github.com/FASHILA/Projek-DAP/assets/147138967/95c11ab6-e519-4e8a-8bde-efdf02adce6c)
+
 
 ## Visualisasi hasil clustering dengan plot
 ```R
@@ -452,3 +473,7 @@ points(kmeans_result$centers, col = 1:num_clusters, pch = 3, cex = 2)
 
 legend("topright", legend = 1:num_clusters, col = 1:num_clusters, pch = 3)
 ```
+
+![image](https://github.com/FASHILA/Projek-DAP/assets/147138967/7f79e27f-5411-4402-a5c4-7ea23b3c3dfc)
+![image](https://github.com/FASHILA/Projek-DAP/assets/147138967/24ed274f-fd4b-4c4a-bcb7-ecc9a1c1aa20)
+![image](https://github.com/FASHILA/Projek-DAP/assets/147138967/fdfbd5d9-783e-4b2a-badf-4de7269af023)
