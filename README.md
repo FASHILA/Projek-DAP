@@ -276,6 +276,7 @@ nurse_data <- nurse_data[, c("EDA", "TEMP")]
 View(nurse_data)
 ```
 Untuk memilih hanya kolom "EDA" dan "TEMP" dari matriks nurse_data yang telah dihasilkan sebelumnya.
+
 ![image](https://github.com/FASHILA/Projek-DAP/assets/147138967/a11802dc-c342-4e91-bf0f-aa028289a768)
 
 ## Inisialisasi Variabel untuk K-Means
@@ -288,6 +289,7 @@ print (centroid)
 print (cent_DF)
 ```
 Inisialisasi variabel yang diperlukan untuk proses K-Means, termasuk jumlah cluster (cluster), nilai awal untuk centroid (c_initial), serta inisialisasi variabel centroid dan cent_DF yang akan digunakan dalam visualisasi.
+
 ![image](https://github.com/FASHILA/Projek-DAP/assets/147138967/bd66cac8-0118-41aa-81e4-88d7d254c56c)
 ![image](https://github.com/FASHILA/Projek-DAP/assets/147138967/a34f63a8-c801-42ed-af17-5ed36bc26d6b)
 
@@ -307,6 +309,7 @@ df <- data.frame(nurse_data)
 updCentroid
 ```
 Inisialisasi variabel updCentroid untuk menyimpan centroid yang diperbarui, variabel status yang digunakan untuk menentukan apakah iterasi K-Means sudah konvergen atau belum, variabel iter untuk menyimpan jumlah iterasi, dan dataframe df yang akan digunakan dalam visualisasi.
+
 ![image](https://github.com/FASHILA/Projek-DAP/assets/147138967/6c3ae2e2-de7c-4ad3-bf69-974175f9c4cd)
 
 ## Membuat Inisial Plot menggunakan ggplot2
@@ -317,6 +320,7 @@ initPlot2
 ggsave(filename = "nurse_data, 3 Cluster - initial.png", width = 40, height = 20, unit = "cm")
 ```
 Untuk membuat plot awal dengn ggplot2.
+
 ![image](https://github.com/FASHILA/Projek-DAP/assets/147138967/0f548a9e-e407-4ac7-a04a-7a76afa65f2a)
 ![image](https://github.com/FASHILA/Projek-DAP/assets/147138967/a40dac11-ab3e-469b-9da1-37fc3cd1a8ef)
 
