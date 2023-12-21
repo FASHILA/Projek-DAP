@@ -251,6 +251,7 @@ nurse_data <- read.csv("~/DAP/Project K-Means/project new/nurse_data.csv")
 View(nurse_data)
 ```
 Untuk mengimport data ke Rstudio Kami menggunakan fungsi yang tersedia di Rstudio yaitu ‘read.csv()’
+![image](https://github.com/FASHILA/Projek-DAP/assets/147138967/5fb7bbcf-eb38-4af8-afc1-3e30ec937b05)
 ```R
 library(ggplot2)
 require(ggplot2)
