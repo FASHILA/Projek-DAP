@@ -101,6 +101,8 @@ Untuk mengimport data ke Rstudio Kami menggunakan fungsi yang tersedia di Rstudi
 ```R
 n<-round(nrow(nurse_data)*0.75);n
 ```
+![image](https://github.com/FASHILA/Projek-DAP/assets/147138967/455bfecd-cce7-4463-911e-666ead46e74e)
+
 ```R
 set.seed(12);samp=sample(1:nrow(nurse_data),n)
 ```
