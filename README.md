@@ -124,6 +124,7 @@ Mengambil nama-nama kolom dari kolom pertama hingga kesembilan dalam dataset nur
 ```R
 f<-paste(feats,collapse='+');f
 ```
+![image](https://github.com/FASHILA/Projek-DAP/assets/147138967/c299535a-a438-4747-b0c7-f696e62a84af)
 Menggunakan fungsi paste untuk menggabungkan nama-nama kolom dalam vektor feats dengan operator +. Hasilnya adalah sebuah string yang berisi formula regresi linear dengan variabel-variabel tersebut yang dihubungkan oleh operator +. Contohnya, jika nama kolom adalah "X1", "X2", ..., "X9", maka hasilnya akan menjadi "X1+X2+...+X9".
 
 f: Menampilkan hasil formula regresi linear yang telah dibuat.
@@ -135,6 +136,8 @@ Kode di atas digunakan untuk membuat formula regresi linear yang bersifat dinami
 ```R
 f1<-paste('label~',f);f1
 ```
+![image](https://github.com/FASHILA/Projek-DAP/assets/147138967/3fd90861-c1cd-47a0-9760-0f0770622792)
+
 Menggunakan fungsi paste untuk membuat formula regresi linear dengan memasukkan "label~" di depan string formula sebelumnya (f). Hasilnya adalah sebuah string formula regresi linear lengkap yang mencakup variabel label dan variabel-variabel prediktor yang telah ditentukan sebelumnya.
 
 f1: Menampilkan hasil formula regresi linear yang telah dibuat, di mana respons variabel (label) dihubungkan dengan variabel-variabel prediktor.
@@ -142,6 +145,8 @@ f1: Menampilkan hasil formula regresi linear yang telah dibuat, di mana respons 
 ```R
 f2<-as.formula(f1);f2
 ```
+![image](https://github.com/FASHILA/Projek-DAP/assets/147138967/7c7ef3a9-be3b-42a1-9c2c-4657fa7ee138)
+
 Menggunakan fungsi as.formula untuk mengonversi string formula regresi linear (f1) menjadi objek formula yang dapat digunakan dalam fungsi-fungsi statistik di R.
 
 f2: Menampilkan hasil formula regresi linear yang telah dikonversi menjadi objek formula.
@@ -183,6 +188,15 @@ print(f2)
 library(neuralnet)
 ```
 ```R
+names(train)
+```
+```R
+f2 <- as.formula("label ~ X + Y + Z + EDA + HR + TEMP")
+```
+```R
+train <- train[, c("label", "X", "Y", "Z", "EDA", "HR", "TEMP")]
+```
+```R
 nn<-neuralnet(f2,train,hidden=7)
 ```
 Membuat dan melatih model jaringan saraf menggunakan fungsi neuralnet. Formula regresi linear (f2) digunakan sebagai formula model, train adalah dataset pelatihan, dan hidden=7 menunjukkan bahwa ada 7 node di lapisan tersembunyi.
@@ -191,6 +205,8 @@ Membuat dan melatih model jaringan saraf menggunakan fungsi neuralnet. Formula r
 ```R
 plot(nn)
 ```
+![image](https://github.com/FASHILA/Projek-DAP/assets/147138967/1177c870-ee82-47ac-9ee6-9ffbb0c2de8e)
+
 
 ## Prediksi Dengan Model
 ```R
@@ -234,6 +250,8 @@ Membuat tabel kontingensi untuk mengevaluasi kinerja model.
 ```R
 conf_matrix
 ```
+![image](https://github.com/FASHILA/Projek-DAP/assets/147138967/1f4e646c-cafc-4521-8abb-f92d4b87468e)
+
 Menampilkan tabel kontingensi.
 ```R
 accuracy_nn <- sum(diag(conf_matrix)) / sum(conf_matrix)
@@ -242,6 +260,9 @@ accuracy_nn <- sum(diag(conf_matrix)) / sum(conf_matrix)
 ```R
 accuracy_nn
 ```
+
+![image](https://github.com/FASHILA/Projek-DAP/assets/147138967/04896202-39c4-4a8f-b3ba-2262d4f2576a)
+
 Menampilkan nilai akurasi model.
 
 ## 3.2 Algoritma K-Means
@@ -483,3 +504,23 @@ legend("topright", legend = 1:num_clusters, col = 1:num_clusters, pch = 3)
 ![image](https://github.com/FASHILA/Projek-DAP/assets/147138967/7f79e27f-5411-4402-a5c4-7ea23b3c3dfc)
 ![image](https://github.com/FASHILA/Projek-DAP/assets/147138967/24ed274f-fd4b-4c4a-bcb7-ecc9a1c1aa20)
 ![image](https://github.com/FASHILA/Projek-DAP/assets/147138967/fdfbd5d9-783e-4b2a-badf-4de7269af023)
+
+# BAB IV : KESIMPULAN
+## 4.1 Kesimpulan
+
+## Kesimpulan K-Means:
+1. Dalam analisis K-Means, penggunaan algoritma ini menghasilkan tiga kelompok (clusters) dengan ukuran masing-masing sebanyak 134, 652, dan 216 data.
+2. Cluster pertama (Cluster 1) memiliki rata-rata nilai EDA sekitar 6.27 dan suhu (TEMP) sekitar 31.26.
+3. Cluster kedua (Cluster 2) memiliki rata-rata nilai EDA sekitar 0.23 dan suhu (TEMP) sekitar 29.51.
+4. Cluster ketiga (Cluster 3) memiliki rata-rata nilai EDA sekitar 6.70 dan suhu (TEMP) sekitar 31.22.
+
+## Kesimpulan ANN:
+1. Dalam analisis Neural Network (ANN), model ini menghasilkan matriks kontingensi (confusion matrix) dengan tiga kelas (0, 1, 2).
+2. Dari matriks tersebut, dapat dilihat bahwa model mampu memprediksi 103 data dengan kelas 0 dengan benar, 95 data dengan kelas 1 dengan benar, dan 102 data dengan kelas 2 dengan benar.
+3. Akurasi model Neural Network sebesar 0.6578 atau 65.78%, yang mengindikasikan sejauh mana model dapat mengklasifikasikan data dengan benar.
+
+## Kesimpulan Umum:
+1. Analisis K-Means memberikan wawasan tentang struktur kelompok dalam data berdasarkan atribut EDA dan TEMP.
+2. Analisis Neural Network memberikan informasi tentang kemampuan model untuk memprediksi tingkat stres perawat berdasarkan variabel-variabel yang diikutsertakan dalam model.
+3. Kedua metode ini memberikan pemahaman yang berbeda tentang data, dengan K-Means lebih fokus pada pembagian kelompok berdasarkan karakteristik tertentu, sementara Neural Network lebih fokus pada prediksi tingkat stres individual.
+
