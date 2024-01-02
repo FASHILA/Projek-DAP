@@ -31,9 +31,8 @@ Berdasarkan latar belakang yang telah diuraikan, penelitian ini bertujuan untuk 
 
 Tujuan dari penelitian ini adalah sebagai berikut:
 
-1. Menganalisis tingkat stres perawat menggunakan data yang diperoleh dari teknologi wearable sensors.
-2. Mengimplementasikan algoritma Artificial Neural Network (ANN) untuk memprediksi tingkat stres perawat.
-3. Menerapkan algoritma K-means untuk mengelompokkan pola tingkat stres perawat yang teridentifikasi.
+1. Mengimplementasikan algoritma Artificial Neural Network (ANN) untuk memprediksi tingkat stres perawat.
+2. Menerapkan algoritma K-means untuk mengelompokkan pola tingkat stres perawat yang teridentifikasi.
 
 ## 1.4 Manfaat Penelitian
 
