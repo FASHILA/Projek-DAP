@@ -23,9 +23,8 @@ Dalam konteks ini, RStudio adalah salah satu perangkat lunak yang dapat digunaka
 
 Berdasarkan latar belakang yang telah diuraikan, penelitian ini bertujuan untuk menjawab beberapa rumusan masalah sebagai berikut:
 
-1. Bagaimana tingkat stres perawat dapat diukur secara objektif menggunakan teknologi wearable sensors?
-2. Bagaimana implementasi algoritma Artificial Neural Network (ANN) dapat membantu dalam menganalisis data tingkat stres perawat?
-3. Bagaimana algoritma K-means dapat digunakan untuk mengelompokkan pola tingkat stres perawat yang teridentifikasi?
+1. Bagaimana implementasi algoritma Artificial Neural Network (ANN) dapat membantu dalam menganalisis data tingkat stres perawat?
+2. Bagaimana algoritma K-means dapat digunakan untuk mengelompokkan pola tingkat stres perawat yang teridentifikasi?
 
 ## 1.3 Tujuan Penelitian
 
